@@ -1,5 +1,6 @@
 import { volumes } from "../../resources/lib/data";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Content() {
   const book = volumes.find(
@@ -24,6 +25,7 @@ export default function Content() {
         width={140}
         height={230}
       />
+      <Link href="/volumes/the-two-towers">Next volume</Link>
     </div>
   );
 }
