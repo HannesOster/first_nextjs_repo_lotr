@@ -1,10 +1,15 @@
-import { volumes } from "../../resources/lib/data";
+import { volumes } from "../resources/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function Content() {
-  const book = volumes.find(({ slug }) => slug === "the-return-of-the-king");
+export default function VolumeDetails() {
+  const router = useRouter();
+  const { id } = router.query;
+  const book = volumes.find(({ slug }) => slug === id);
   const books = book.books;
+
+  console.log(router);
   return (
     <div>
       <h1>{book.title}</h1>
@@ -18,12 +23,7 @@ export default function Content() {
           {books[1].ordinal} : {books[1].title}
         </li>
       </ul>
-      <Image
-        src="/the-return-of-the-king.png"
-        alt="cover"
-        width={140}
-        height={230}
-      />
+      <Image src={book.cover} alt="cover" width={140} height={230} />
       <Link href="/volumes/the-two-towers">Previous volume</Link>
     </div>
   );

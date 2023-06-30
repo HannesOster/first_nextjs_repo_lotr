@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { introduction } from "./resources/lib/data";
+import { introduction, volumes } from "./resources/lib/data";
 
 export default function HomePage() {
   return (
@@ -8,20 +8,11 @@ export default function HomePage() {
       <p>{introduction}</p>
       <h2>All Volumes</h2>
       <ul>
-        <li>
-          {" "}
-          <Link href="/volumes/the-fellowship-of-the-ring">
-            The fellowship of the ring
-          </Link>
-        </li>
-        <li>
-          <Link href="/volumes/the-two-towers">The two towers</Link>
-        </li>
-        <li>
-          <Link href="/volumes/the-return-of-the-king">
-            The return of the king
-          </Link>
-        </li>
+        {volumes.map(({ slug, title }) => (
+          <li key={slug}>
+            <Link href={`/volumes/${slug}`}>{title}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
