@@ -8,8 +8,34 @@ export default function VolumeDetails() {
   const { id } = router.query;
   const book = volumes.find(({ slug }) => slug === id);
   const books = book.books;
+  const indexOfBook = volumes.indexOf(book);
+  const nextBook = volumes[indexOfBook + 1];
+  const previousBook = volumes[indexOfBook - 1];
+  function Navigation() {
+    if (indexOfBook === 1) {
+      return (
+        <>
+          <Link href={`/volumes/${previousBook.slug}`}>Previous volume</Link>
+          <Link href={`/volumes/${nextBook.slug}`}>Next volume</Link>
+        </>
+      );
+    }
+    if (indexOfBook === 0) {
+      return (
+        <>
+          <Link href={`/volumes/${nextBook.slug}`}>Next volume</Link>
+        </>
+      );
+    }
+    if (indexOfBook === 2) {
+      return (
+        <>
+          <Link href={`/volumes/${previousBook.slug}`}>Previous volume</Link>
+        </>
+      );
+    }
+  }
 
-  console.log(router);
   return (
     <div>
       <h1>{book.title}</h1>
@@ -24,7 +50,7 @@ export default function VolumeDetails() {
         </li>
       </ul>
       <Image src={book.cover} alt="cover" width={140} height={230} />
-      <Link href="/volumes/the-two-towers">Previous volume</Link>
+      <Navigation />
     </div>
   );
 }
