@@ -7,6 +7,15 @@ export default function Content() {
     <div>
       <h1>{book.title}</h1>
       <p>{book.description}</p>
+      <ul>
+        <li>
+          {book.books[0].ordinal} : {book.books[0].title}
+        </li>
+
+        <li>
+          {book.books[1].ordinal} : {book.books[1].title}
+        </li>
+      </ul>
     </div>
   );
 }
