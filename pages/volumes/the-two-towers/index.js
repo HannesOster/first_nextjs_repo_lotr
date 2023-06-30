@@ -16,6 +16,7 @@ export default function Content() {
           {book.books[1].ordinal} : {book.books[1].title}
         </li>
       </ul>
+      <Image src="/the-two-towers.png" alt="cover" width={140} height={230} />
     </div>
   );
 }

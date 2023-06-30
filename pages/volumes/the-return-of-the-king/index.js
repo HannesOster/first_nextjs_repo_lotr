@@ -17,6 +17,12 @@ export default function Content() {
           {books[1].ordinal} : {books[1].title}
         </li>
       </ul>
+      <Image
+        src="/the-return-of-the-king.png"
+        alt="cover"
+        width={140}
+        height={230}
+      />
     </div>
   );
 }
